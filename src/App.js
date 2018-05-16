@@ -40,6 +40,15 @@ class App extends Component {
 
   render() {
 
+    const style = {
+      backgroundColor: 'white',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: 8,
+      cursor: 'pointer',
+      outline: 'none'
+    }
+
     let persons = null 
 
     if(this.state.showPersons === true) {
@@ -62,7 +71,7 @@ class App extends Component {
     return (
       <div className="App">
       <p> Hello </p> 
-      <button onClick={this.togglePersonsHandler}> Toggle Persons </button> 
+      <button onClick={this.togglePersonsHandler} style={style}> Toggle Persons </button> 
       {persons}     
       </div> 
     );
