@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Radium from 'radium';
+import Radium, {StyleRoot} from 'radium';
 import Person from './Person/Person.js';
 
 class App extends Component {
@@ -90,12 +90,14 @@ class App extends Component {
 
 
     return (
+      <StyleRoot> 
       <div className="App">
       <p> Hello </p> 
       <p className={classes.join(' ')}> This is really working </p> 
       <button onClick={this.togglePersonsHandler} style={style}> Toggle Persons </button> 
       {persons}     
       </div> 
+      </StyleRoot> 
     );
   }
 }
