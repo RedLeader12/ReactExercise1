@@ -27,6 +27,16 @@ class App extends PureComponent {
     console.log('[App.js] inside CWM')
   }
 
+  static getDerivedStateFromProps(nextProps, prevState){
+    console.log('[uPDATEApp.js]',nextProps,prevState)
+
+    return prevState;
+  }
+
+  getSnapshotBeforeUpdate(){
+    console.log("[Update App.js] Inside getSnapshotBeforeUpdateetDerivedstatefromPops")
+  }
+
   componentDidMount(){
     console.log('[App.js] inside CWD')
   }
