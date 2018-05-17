@@ -17,12 +17,12 @@ constructor(props){
     }
   
     componentDidMount(){
-      console.log('[Persons.js] inside CWD')
-      if(this.props.position === 0){
-        this.inputElement.focus()
-      }
+        console.log('[Persons.js] inside CWD')
+        if(this.props.position === 0){
+        this.inputElement.current.focus()
+        }
     }
-
+    
     render (){
     console.log('[Persons.js] inside render')
         return (
@@ -30,7 +30,7 @@ constructor(props){
         <p onClick={this.props.click}> I'm {this.props.name} and I am {this.props.age} years old! </p> 
         <p> {this.props.children} </p>
         <input
-        ref={(inp) => {this.inputElement = inp}}
+        ref={this.inputElement}
         type='text' 
         onChange={this.props.change} 
         value={this.props.name}/>

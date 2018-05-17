@@ -5,6 +5,7 @@ class Persons extends PureComponent {
 constructor(props){
     super(props)
     console.log('[Persons.js]')
+
   }
 
   componentWillMount(){
