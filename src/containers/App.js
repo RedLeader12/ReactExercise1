@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react';
 import classes from './App.css';
 import Cockpit from '../components/Cockpit/Cockpit';
-import WithClass from '../hoc/WithClass';
+import Aux from '../hoc/Aux';
+import withClass from '../hoc/WithClass';
 import Persons from '../components/Persons/Persons';
 
 class App extends PureComponent {
@@ -14,7 +15,8 @@ class App extends PureComponent {
         {id: '1232', name: 'Dania', age: '24'},
         {id: '1245', name: 'Hey', age: '15'},
       ],
-      showPersons: false
+      showPersons: false,
+      toggleClicked: 0 
     }
   }
 
@@ -24,12 +26,6 @@ class App extends PureComponent {
 
   componentDidMount(){
     console.log('[App.js] inside CWD')
-  }
-
-  shouldComponentUpdate(nextProps, nextState){
-    console.log('[Update] App.js sCU', nextProps, nextState)
-    return nextState.persons !== this.state.persons ||
-    nextState.showPersons !== this.state.showPersons
   }
 
   componentWillUpdate(nextProps, nextState){
@@ -43,7 +39,12 @@ class App extends PureComponent {
 
   togglePersonsHandler = () => {
     const doesShow = this.state.showPersons
-    this.setState({showPersons: !doesShow})
+    this.setState( (prevState, props) => {
+      return {
+        showPersons: !doesShow,
+        toggleClicked: prevState.toggleClicked + 1
+      }
+    })
   }
 
   nameChangeHandler = (event, id) => {
@@ -83,7 +84,7 @@ class App extends PureComponent {
     } 
 
     return (
-      <WithClass classes={classes.App}> 
+      <Aux> 
       <button onClick={() => {this.setState({showPersons: true})}}> Show Persons </button> 
       <Cockpit
       appTitle={this.props.appTitle}
@@ -92,9 +93,9 @@ class App extends PureComponent {
       toggle={this.togglePersonsHandler}
       /> 
       {persons}     
-      </WithClass> 
+      </Aux> 
     );
   }
 }
 
-export default App;
+export default withClass(App, classes.App);
