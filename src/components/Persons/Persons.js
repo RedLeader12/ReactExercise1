@@ -36,6 +36,7 @@ render(){
        name={person.name}
        age={person.age}
        key={person.id}          
+       position={index}
                     /> 
             });
       } 
