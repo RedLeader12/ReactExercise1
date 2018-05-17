@@ -5,7 +5,7 @@ class Persons extends PureComponent {
 constructor(props){
     super(props)
     console.log('[Persons.js]')
-
+    this.lastPersonRef = React.createRef();
   }
 
   componentWillMount(){
@@ -14,6 +14,7 @@ constructor(props){
   
     componentDidMount(){
       console.log('[Persons.js] inside CWD')
+      this.lastPersonRef.current.focus();
     }
 
     componentWillReceiveProps( nextProps){
@@ -36,8 +37,8 @@ render(){
        change={(event) => this.props.changed(event, person.id)}
        name={person.name}
        age={person.age}
-       key={person.id}          
-       position={index}
+       key={person.id}
+       ref={this.lastPersonRef}   
                     /> 
             });
       } 
