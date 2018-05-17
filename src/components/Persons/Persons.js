@@ -1,7 +1,7 @@
-import React, { Component }from 'react';
+import React, { PureComponent }from 'react';
 import Person from './Person/Person';
 
-class Persons extends Component {
+class Persons extends PureComponent {
 constructor(props){
     super(props)
     console.log('[Persons.js]')
@@ -17,11 +17,6 @@ constructor(props){
 
     componentWillReceiveProps( nextProps){
           console.log('[UPDATE] Persons.js inside CWRP ')
-    }
-
-    shouldComponentUpdate(nextProps, nextState){
-          console.log('[Update] Persons.js sCU', nextProps, nextState)
-          return nextProps.persons !== this.props.persons;
     }
 
     componentWillUpdate(nextProps, nextState){
